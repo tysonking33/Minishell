@@ -12,11 +12,23 @@
 
 #include "minishell.h"
 
+int ft_attach_node(t_env *end_node, char *source)
+{
+	t_env *new_node;
+
+	if(strcpy(new_node->env_variable, source))
+		return(-1);
+	end_node->next_pointer = new_node;
+	return(0);
+}
+
 int	get_environment(t_msh *minishell, char **env)
 {
 	int	status;
 	int	number;
 	t_env current_variable;
+	t_env temp_variable;
+	t_env head;
 
 	status = 1;
 	number = 0;
@@ -28,37 +40,16 @@ int	get_environment(t_msh *minishell, char **env)
 		*(env++);
 		number++;
 	}
+	int i;
+	i = 0;
+	strcpy(current_variable->env_variable, env[i]);
 	while(status)
 	{
-		status = strcpy(current_variable.env_variable, *env);
-		minishell.environment_list = current_variable 
-
-		*(env++);
+		status = ft_attach_node(current_variable, env[++i]);
+		if(status = -1)
+			return(-1);
+		current_variable = current_variable->next_pointer;
 	}
-	
-	
-	
-	/*int ctr = 0;
-	head = env[0];
-	head.next_pointer = NULL;
-	while (*env[ctr])
-	{
-		current_variable = head;
-		temp_var = env[ctr + 1];
-		current_variable->next_pointer = temp_var;
-		ctr++;
-	}
-	minishell->environment_variables.env_variables = head;*/
-	/*while(number)
-	{
-		minishell.environemt_list->next = current_variable;
-		number--;
-	}*/
-
-
-
-
-
 	return(1);
 }
 
