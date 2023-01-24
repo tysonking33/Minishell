@@ -1,38 +1,26 @@
-NAME = minishell
+SRCS =	main.c \
+
+OBJS = $(SRCS:c=o)
+
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
-RM = rm -f
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -rf
+HEADER = minishell.h
+INCLUDES = -I./includes
 
-SRCS_DIR = main /
+NAME = minishell
 
-FILES = main
-
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
-OBJS_DIR = sources/
-
-OBJS = $(SRCS:.c=.o)
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
-
-all: $(NAME)
-
-$(OBJS): %.o: %.c
-	$(CC) $(FLAGS) -c -o $@ $<
+all:	$(NAME)
 
 $(NAME): $(OBJS)
-	@$(MAKE) re -C 
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME) 
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	rm -f $(OBJS)
 	$(RM) $(OBJS)
-	@$(MAKE) -C clean
 
-fclean: clean
-	rm -f $(NAME)
+fclean:		clean
 	$(RM) $(NAME)
-	@$(MAKE) -C fclean
 
+re:	fclean all
 
-re: clean all
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean
