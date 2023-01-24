@@ -1,4 +1,5 @@
 SRCS =	main.c \
+		environment.c \
 
 OBJS = $(SRCS:c=o)
 

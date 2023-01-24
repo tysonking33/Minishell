@@ -16,6 +16,10 @@
 # include <string.h>
 # include <stdlib.h>
 
+/* for readline() */
+#include <readline/readline.h>
+#include <readline/history.h>
+
 /*typedef struct s_history;
 {
 	char instructions[128];
@@ -42,5 +46,15 @@ typedef struct s_msh
 	t_env	*environment_list;
 	t_token	*token_list;
 } t_msh;
+
+/* found in main.c */
+int	main(int argc, char **argv, char **env);
+
+/* found in environment.c */
+int ft_attach_node(t_env *end_node, char *source);
+void print_env(t_msh *minishell);
+int	get_environment(t_msh *minishell, char **env);
+
+
 
 #endif
