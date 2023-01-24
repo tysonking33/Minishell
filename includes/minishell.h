@@ -13,6 +13,8 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # include <stdio.h>
+# include <string.h>
+# include <stdlib.h>
 
 /*typedef struct s_history;
 {
@@ -20,8 +22,6 @@
 	struct s_history *prev;
 	struct s_history *next;
 }	t_history */
-
-STDIN = stdin
 
 typedef struct s_env
 {
@@ -41,6 +41,6 @@ typedef struct s_msh
 {
 	t_env	*environment_list;
 	t_token	*token_list;
-}
+} t_msh;
 
 #endif

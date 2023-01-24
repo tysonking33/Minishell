@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 int ft_attach_node(t_env *end_node, char *source)
 {
 	t_env *new_node;
 
+	new_node = malloc(sizeof(t_env));
 	if(strcpy(new_node->env_variable, source))
 		return(-1);
 	end_node->next_pointer = new_node;
@@ -25,28 +26,27 @@ int ft_attach_node(t_env *end_node, char *source)
 int	get_environment(t_msh *minishell, char **env)
 {
 	int	status;
-	int	number;
-	t_env current_variable;
-	t_env temp_variable;
-	t_env head;
+	t_env *current_variable;
+	int i;
 
 	status = 1;
-	number = 0;
-	while(status)
+	i = 0;
+	/*while(status)
 	{
-		status = check_valid(minishell, *env)
+		status = check_valid(minishell, env);
 		if(!status)
 			return(-1);
-		*(env++);
-		number++;
-	}
-	int i;
+		i++;
+	}*/
 	i = 0;
+	
+	current_variable = malloc(sizeof(t_env));
 	strcpy(current_variable->env_variable, env[i]);
+	minishell->environment_list = current_variable;
 	while(status)
 	{
 		status = ft_attach_node(current_variable, env[++i]);
-		if(status = -1)
+		if(status == -1)
 			return(-1);
 		current_variable = current_variable->next_pointer;
 	}
@@ -55,18 +55,20 @@ int	get_environment(t_msh *minishell, char **env)
 
 int	main(int argc, char **argv, char **env)
 {
-	t_msh	*minishell;
-
+	t_msh	minishell;
 	int status;
 
 	status = 1;
-	status = get_environment(minishell, env);
-	while(status)
+	status = get_environment(&minishell, env);
+	/*while(status)
 	{
-		printf("$ ")
-		get_commands(minishell, STDIN);
+		printf("$ ");
+		get_commands(minishell, stdin);
 
 		status = execute(minishell);
 
-	}
+	}*/
+	(void)argc;
+	(void)argv;
+	(void)status;
 }
