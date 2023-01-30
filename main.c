@@ -14,8 +14,9 @@
 
 int get_commands(t_msh *minishell, char *stdin)
 {
-    char *commmand  = readline("$ ")
+    char *commmand  = readline("$ ");
     char *sing_comms = strtok(command, " ");
+    
 }
 
 int	main(int argc, char **argv, char **env)
