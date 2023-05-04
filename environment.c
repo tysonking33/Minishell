@@ -42,6 +42,5 @@ int	get_environment(t_msh *minishell, char **env)
             return(-1);
 		current_variable = current_variable->next_pointer;
 	}
-    print_env(minishell);
 	return(1);
 }

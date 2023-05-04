@@ -15,6 +15,8 @@
 # include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
+# include "../libftprintf/ft_printf.h"
+# include "../libftprintf/libft/libft.h"
 
 /* for readline() */
 #include <readline/readline.h>
@@ -54,7 +56,7 @@ int	main(int argc, char **argv, char **env);
 int ft_attach_node(t_env *end_node, char *source);
 void print_env(t_msh *minishell);
 int	get_environment(t_msh *minishell, char **env);
-
+char	**ft_split(char const *s, char c);
 
 
 #endif

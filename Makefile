@@ -1,3 +1,5 @@
+NAME = minishell
+
 SRCS =	main.c \
 		environment.c \
 
@@ -8,19 +10,24 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 HEADER = minishell.h
 INCLUDES = -I./includes
-
-NAME = minishell
+LIBFTPRINTF = libftprintf/libftprintf.a
 
 all:	$(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(LIBFTPRINTF):
+	$(MAKE) -C ./libftprintf
+
+$(NAME): $(OBJS) $(LIBFTPRINTF)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFTPRINTF) -o $(NAME) -lreadline
 
 clean:
 	$(RM) $(OBJS)
+	$(MAKE) clean -C ./libftprintf
 
-fclean:		clean
+fclean: 
+	$(RM) $(OBJS)
 	$(RM) $(NAME)
+	$(MAKE) fclean -C ./libftprintf
 
 re:	fclean all
 
