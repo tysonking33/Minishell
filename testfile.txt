@@ -1,0 +1,20 @@
+total 1337
+drwxrwxrwx 1 phucnguyen42 phucnguyen42     512 May 13 10:58 .
+drwxrwxrwx 1 phucnguyen42 phucnguyen42     512 May 13 10:44 ..
+drwxrwxrwx 1 phucnguyen42 phucnguyen42     512 May  4 19:06 .git
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42     553 May  4 19:18 Makefile
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42      60 May  3 16:10 README.md
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42 1307414 May  4 19:01 en.subject (6).pdf
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42    2296 May  3 17:47 environment.o
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42      37 May 13 10:47 execute.c
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42    2369 May 13 23:23 get_command.c
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42    3920 May  4 19:30 get_command.o
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42    1103 May  3 17:45 get_environment.c
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42    2296 May  4 19:21 get_environment.o
+drwxrwxrwx 1 phucnguyen42 phucnguyen42     512 May  3 16:42 includes
+drwxrwxrwx 1 phucnguyen42 phucnguyen42     512 May  3 17:45 libftprintf
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42    1289 May  4 19:35 main.c
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42    1792 May  4 19:21 main.o
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42   22088 May  4 19:30 minishell
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42       0 May  3 16:10 parse.c
+-rwxrwxrwx 1 phucnguyen42 phucnguyen42       0 May 13 23:27 testfile.txt

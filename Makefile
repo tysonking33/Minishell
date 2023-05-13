@@ -1,7 +1,8 @@
 NAME = minishell
 
 SRCS =	main.c \
-		environment.c \
+		get_environment.c \
+		get_command.c \
 
 OBJS = $(SRCS:c=o)
 
