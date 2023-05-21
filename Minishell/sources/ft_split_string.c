@@ -1,16 +1,5 @@
 #include "../includes/Minishell.h"
 
-int	stringlen(char *src)
-{
-	int l;
-
-	l = 0;
-	while (src[l] != 0)
-		l++;
-	return (l);
-}
-
-
 /* find the next start of the next argument*/
 int nextStart(char *src, int currentStart)
 {
@@ -25,7 +14,7 @@ int nextStart(char *src, int currentStart)
 /* get the current argument */
 char *wordDup(char *src, int startidx)
 {
-	char *dest = (char *)malloc(stringlen(src) * sizeof(char *));
+	char *dest = (char *)malloc(ft_strlen(src) * sizeof(char *));
 	int i = startidx;
 	int dest_counter = 0;
 	while (src[i] != ' ' && src[i] != '\n' && src[i])

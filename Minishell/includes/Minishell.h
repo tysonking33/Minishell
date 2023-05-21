@@ -8,6 +8,8 @@
 #include <stdlib.h>             //malloc
 #include <sys/wait.h>            //wait
 
+# include "../libftprintf/ft_printf.h"
+# include "../libftprintf/libft/libft.h"
 
 
 /* found in main.c */

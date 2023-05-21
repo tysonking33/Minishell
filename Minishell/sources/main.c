@@ -77,21 +77,6 @@ char **parse_commands(char *src)
     return parsed;
 }
 
-/* string compare */
-int	ft_strcmp(char *s1, char *s2)
-{
-	int i;
-
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		++i;
-	}
-	return (s1[i] - s2[i]);
-}
-
 /* find presetablished commands, e.g. echo, cd*/
 void change_to_preestablished_loc(char **parsedCommands)
 {
@@ -123,7 +108,6 @@ void change_to_preestablished_loc(char **parsedCommands)
     else if (ft_strcmp(current_command, "clear") == 0){                 //not yet working
         parsedCommands[0] = "/usr/bin/clear";
     }
-
     printf("no no seggy fault\n");
 }
 

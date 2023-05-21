@@ -16,21 +16,28 @@ OBJS_DIR = sources/
 OBJS = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 
+LIBFTPRINTF = libftprintf/libftprintf.a
+
 all: $(NAME)
 
 $(OBJS): %.o: %.c
 	$(CC) $(FLAGS) -c -o $@ $< -lreadline
 
-$(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME) -lreadline
+$(LIBFTPRINTF):
+	$(MAKE) -C ./libftprintf
+
+$(NAME): $(OBJS) $(LIBFTPRINTF)
+	$(CC) $(FLAGS) $(OBJS) $(LIBFTPRINTF) -o $(NAME) -lreadline
 
 clean:
 	rm -f $(OBJS)
 	$(RM) $(OBJS)
+	$(MAKE) clean -C ./libftprintf
 
 fclean: clean
 	rm -f $(NAME)
 	$(RM) $(NAME)
+	$(MAKE) fclean -C ./libftprintf
 
 re: clean all
 
