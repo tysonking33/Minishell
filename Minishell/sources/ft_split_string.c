@@ -56,7 +56,6 @@ char		**ft_split_string(char *src)
 	}
 	splitString[current_argument] = NULL;
 
-
 	i = 0;
 	while (i < (argument_count +1)){
 		printf("splitString[%d]: %s\n", i, splitString[i]);

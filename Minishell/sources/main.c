@@ -36,48 +36,7 @@ int takeInput(char *inputString)
     }
 }
 
-/* find number of arguments (cmd) = 1, (cmd arg1) = 2*/
-int argCount(char *src)
-{
-    int i;
-    int arg_count;
-
-    i = 0;
-    arg_count = 0;
-    while (src[i])
-    {
-        if (src[i] == ' '){
-            arg_count++;
-        }
-        i++;
-    }
-    return (arg_count + 1);
-}
-
-/* parse commands */
-char **parse_commands(char *src)
-{
-    int arg_count;
-
-    arg_count = argCount(src);
-    char **parsed = (char **)malloc(arg_count*sizeof(char **));
-    int i = 0;
-    while (i < arg_count)
-    {
-        parsed[i] = (char *)malloc(1000*sizeof(char *));
-        i++;
-    }
-    parsed = ft_split_string(src);
-    /*i = 0;
-
-    while (i < arg_count+1){
-        printf("wagwan %s\n", parsed[i]);
-        i++;
-    }*/
-    return parsed;
-}
-
-/* find presetablished commands, e.g. echo, cd*/
+/* find presetablished commands, e.g. echo, man, pwd etc. cannot do cd and clear*/
 void change_to_preestablished_loc(char **parsedCommands)
 {
     char *current_command = parsedCommands[0];
@@ -103,10 +62,13 @@ void change_to_preestablished_loc(char **parsedCommands)
         parsedCommands[0] = "/usr/bin/cat";
     }
     else if (ft_strcmp(current_command, "cd") == 0){                    //not yet working
-        parsedCommands[0] = "cd:";
+        parsedCommands[0] = "cd";
     }
     else if (ft_strcmp(current_command, "clear") == 0){                 //not yet working
-        parsedCommands[0] = "/usr/bin/clear";
+        parsedCommands[0] = "clear";
+    }
+		else if (ft_strcmp(current_command, "rm") == 0){
+        parsedCommands[0] = "/usr/bin/rm";
     }
     printf("no no seggy fault\n");
 }
@@ -115,6 +77,7 @@ void change_to_preestablished_loc(char **parsedCommands)
 void execute_arguments(char **parsedCommands)
 {
     pid_t pid = fork();
+		int execute;
     //printf("currentdir: %s\n",currentdir);
     char *newenvironment[] = { NULL };
     /*char **fullParseCommand = (char **)malloc((arg_count+1)*sizeof(char **));
@@ -133,14 +96,14 @@ void execute_arguments(char **parsedCommands)
     }
     printf("not seg fault1\n");*/
     if (pid <= -1)
-    {
-        //printf("failed fork\n");
         perror("failed forking\n");
-    }
     else if (pid == 0)
     {
         printf("in child process\n");
-        int execute = execve(parsedCommands[0], parsedCommands, newenvironment);
+				if (ft_strcmp(parsedCommands[0], "cd") == 0)
+					execute = execute_cd(parsedCommands);
+				else
+        	execute = execve(parsedCommands[0], parsedCommands, newenvironment);
         printf("execute: %d\n", execute);
     }
     else
@@ -155,7 +118,6 @@ int main()
 {
     char inputString[1000];
     int arg_count;
-
 
     init_shell();
     while (1)

@@ -29,6 +29,5 @@ int find_quotes(char *src){
     if ((count_double_quote % 2 != 0) || (count_single_quote % 2 != 0)){
         return 2;
     }
-
     return 3;
 }

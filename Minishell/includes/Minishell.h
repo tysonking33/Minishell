@@ -17,10 +17,12 @@ int main();
 void execute_arguments(char **parsedCommands);
 void change_to_preestablished_loc(char **parsedCommands);
 int	ft_strcmp(char *s1, char *s2);
-char **parse_commands(char *src);
-int argCount(char *src);
 int takeInput(char *inputString);
 void init_shell();
+
+// found in parsing.c
+int argCount(char *src);
+char **parse_commands(char *src);
 
 /* found in ft_split.c */
 char		**ft_split_string(char *src);
@@ -31,5 +33,8 @@ char *wordDup(char *src, int startidx);
 
 /* found in split_quotes.c */
 int find_quotes(char *src);
+
+/*found in execute_cd.c*/
+int execute_cd(char **parsed_commands);
 
 #endif

@@ -8,6 +8,8 @@ SRCS_DIR = sources/
 FILES = ft_split_string \
 		main \
 		split_quotes \
+		parse_commands \
+		execute_cd \
 
 
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
