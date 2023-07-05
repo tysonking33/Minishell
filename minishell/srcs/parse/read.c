@@ -54,25 +54,12 @@ void	prntproc(pid_t pid, int *status)
 char	*input(void)
 {
 	char			*line;
-	pid_t			pid;
-	static pid_t	kid;
 	int				status;
 
 	line = (char *) NULL;
-	pid = fork();
-	if (pid == kid)
-		exit(0);
-	else if (pid == 0)
-	{
-		chldproc();
-		line = readline("T-P_wrld~: ");
-		checknull(line);
-	}
-	else if (pid > 0)
-	{
-		kid = pid;
-		prntproc(pid, &status);
-	}
+	chldproc();
+	line = readline("T-P_wrld~: ");
+	checknull(line);
 	if (line && *line)
 		add_history(line);
 	return (line);
