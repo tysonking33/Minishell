@@ -12,6 +12,15 @@
 
 #include "../mini.h"
 
+/*what the shell does:
+gets input
+ - splits into two processes
+ - one process waits for the input line from user
+ - other process 
+parses input
+
+executes
+*/
 int	main(int ac, char **av, char **envp)
 {
 	char		*line;
