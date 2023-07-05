@@ -35,13 +35,13 @@ void	checknull(char *line)
 	}
 }
 
-void	prntproc(void)
+void	chldproc(void)
 {
 	signal(SIGINT, &cont);
 	signal(SIGTSTP, &cont);
 }
 
-void	chldproc(pid_t pid, int *status)
+void	prntproc(pid_t pid, int *status)
 {
 	signal(SIGINT, &cont1);
 	signal(SIGQUIT, &cont1);
@@ -64,14 +64,14 @@ char	*input(void)
 		exit(0);
 	else if (pid == 0)
 	{
-		prntproc();
+		chldproc();
 		line = readline("T-P_wrld~: ");
 		checknull(line);
 	}
 	else if (pid > 0)
 	{
 		kid = pid;
-		chldproc(pid, &status);
+		prntproc(pid, &status);
 	}
 	if (line && *line)
 		add_history(line);
